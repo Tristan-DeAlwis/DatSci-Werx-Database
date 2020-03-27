@@ -343,7 +343,7 @@ INSERT INTO `keywords` (`Paper_DOI`, `Keyword`) VALUES
 -- Dumping data for table `Publisher`
 --
 
-INSERT INTO `publishers` (`ISSN`, `Publisher_Name`, `Research Domain`, `Impact_Factor`) VALUES
+INSERT INTO `publishers` (`ISSN`, `Publisher_Name`, `Research_Domain`, `Impact_Factor`) VALUES
 ('0001-1452', 'AIAA JOURNAL', 'Engineering', 1.829),
 ('0002-9165', 'AMERICAN JOURNAL OF CLINICAL NUTRITION', 'Nutrition & Dietetics', 0.516),
 ('0003-1305', 'AMERICAN STATISTICIAN', 'Mathematics', 1.54),
