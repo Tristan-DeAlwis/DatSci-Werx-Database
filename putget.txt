@@ -1,7 +1,0 @@
-mput /Users/tristandealwis/OneDrive/"_DSC 461 Intro to Databases"/Project/public_html/* /home/tdealwis/public_html/
-
-mput /Users/tristandealwis/OneDrive/"_DSC 461 Intro to Databases"/Project/milestone3/taskB/* /home/tdealwis/milestone3/taskB/
-
-get /home/tdealwis/public_html/* /Users/tristandealwis/OneDrive/"_DSC 461 Intro to Databases"/Project/public_html/
-
-source /home/tdealwis/milestone3/taskB/create.sql
