@@ -108,9 +108,8 @@ CREATE TABLE `writes` (
   `Paper_DOI` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Indexes for dumped tables
---
+
+-- --------------------------------------------------------
 
 --
 -- Indexes for table `Authors`

@@ -14,38 +14,44 @@
 <body>
 
 <?php
-require_once('setup.php');
+require_once('db_setup.php');
+$sql = "USE tdealwis_1;";
+if ($conn->query($sql) === TRUE) {
+   // echo "using Database tbiswas2_company";
+} else {
+   echo "Error using  database: " . $conn->error;
+}
 // Query:
-$title = $_POST['title'];
-$sql = "SELECT * FROM research_papers WHERE 'Title' LIKE $title;";
+$Author_ORCID = $_POST['Author_ORCID'];
+$Paper_DOI= $_POST['Paper_DOI'];
+$sql = "SELECT * FROM `Writes` where `Author_ORCID` = '$Author_ORCID' OR `Paper_DOI` LIKE '$Paper_DOI';";
+
+//$sql = "SELECT * FROM Students where Username like 'amai2';";
 $result = $conn->query($sql);
+
 if($result->num_rows > 0){
 
-  ?>
-  <table class="table table-striped">
-    <tr>
-      <th>DOI</th>
-      <th>Title</th>
-      <th>Publisher_ISSN</th>
-      <th>Publication_Date</th>
-      <th>Cited_Times</th>
-    </tr>
-
-    <?php
-    while($row = $result->fetch_assoc()){
-      ?>
+//$stmt = $conn->prepare("Select * from Students Where Username like ?");
+//$stmt->bind_param("s", $username);
+//$result = $stmt->execute();
+//$result = $conn->query($sql);
+?>
+   <table class="table table-striped">
       <tr>
-        <td><?php echo $row['DOI']?></td>
-        <td><?php echo $row['Title']?></td>
-        <td><?php echo $row['Publisher_ISSN']?></td>
-        <td><?php echo $row['Publication_Date']?></td>
-        <td><?php echo $row['Cited_Times']?></td>
+        <th>Author_ORCID</th>
+        <th>Paper_DOI</th>
+      </tr>
+<?php
+while($row = $result->fetch_assoc()){
+?>
+      <tr>
+          <td><?php echo $row['Author_ORCID']?></td>
+          <td><?php echo $row['Paper_DOI']?></td>
       </tr>
 
-      <?php
-    }
-  }
-
+<?php
+}
+}
 else {
 echo "Item not found";
 }

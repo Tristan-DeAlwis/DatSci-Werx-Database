@@ -14,38 +14,44 @@
 <body>
 
 <?php
-require_once('setup.php');
+require_once('db_setup.php');
+$sql = "USE tdealwis_1;";
+if ($conn->query($sql) === TRUE) {
+   // echo "using Database tbiswas2_company";
+} else {
+   echo "Error using  database: " . $conn->error;
+}
 // Query:
-$title = $_POST['title'];
-$sql = "SELECT * FROM research_papers WHERE 'Title' LIKE $title;";
+$Citor_DOI = $_POST['Citor_DOI'];
+$Citee_DOI= $_POST['Citee_DOI'];
+$sql = "SELECT * FROM `Citations` where `Citor_DOI` = '$Citor_DOI' OR `Citee_DOI` LIKE '$Citee_DOI';";
+
+//$sql = "SELECT * FROM Students where Username like 'amai2';";
 $result = $conn->query($sql);
+
 if($result->num_rows > 0){
 
-  ?>
-  <table class="table table-striped">
-    <tr>
-      <th>DOI</th>
-      <th>Title</th>
-      <th>Publisher_ISSN</th>
-      <th>Publication_Date</th>
-      <th>Cited_Times</th>
-    </tr>
-
-    <?php
-    while($row = $result->fetch_assoc()){
-      ?>
+//$stmt = $conn->prepare("Select * from Students Where Username like ?");
+//$stmt->bind_param("s", $username);
+//$result = $stmt->execute();
+//$result = $conn->query($sql);
+?>
+   <table class="table table-striped">
       <tr>
-        <td><?php echo $row['DOI']?></td>
-        <td><?php echo $row['Title']?></td>
-        <td><?php echo $row['Publisher_ISSN']?></td>
-        <td><?php echo $row['Publication_Date']?></td>
-        <td><?php echo $row['Cited_Times']?></td>
+        <th>Citor_DOI</th>
+        <th>Citee_DOI</th>
+      </tr>
+<?php
+while($row = $result->fetch_assoc()){
+?>
+      <tr>
+          <td><?php echo $row['Citor_DOI']?></td>
+          <td><?php echo $row['Citee_DOI']?></td>
       </tr>
 
-      <?php
-    }
-  }
-
+<?php
+}
+}
 else {
 echo "Item not found";
 }
